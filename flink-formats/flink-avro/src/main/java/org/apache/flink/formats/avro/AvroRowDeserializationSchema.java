@@ -17,6 +17,7 @@
 
 package org.apache.flink.formats.avro;
 
+import org.apache.avro.io.BinaryDecoder;
 import org.apache.flink.api.common.serialization.AbstractDeserializationSchema;
 import org.apache.flink.api.common.typeinfo.TypeInformation;
 import org.apache.flink.formats.avro.typeutils.AvroRecordClassConverter;
@@ -50,6 +51,11 @@ import java.util.List;
 public class AvroRowDeserializationSchema extends AbstractDeserializationSchema<Row> {
 
 	/**
+	 * ThreadLocal avro decoder that decodes binary data.
+	 */
+	private static final ThreadLocal<BinaryDecoder> DECODER =  new ThreadLocal<>();
+
+	/**
 	 * Avro record class.
 	 */
 	private Class<? extends SpecificRecord> recordClazz;
@@ -68,11 +74,6 @@ public class AvroRowDeserializationSchema extends AbstractDeserializationSchema<
 	 * Input stream to read message from.
 	 */
 	private transient MutableByteArrayInputStream inputStream;
-
-	/**
-	 * Avro decoder that decodes binary data.
-	 */
-	private transient Decoder decoder;
 
 	/**
 	 * Record to deserialize byte array to.
@@ -96,7 +97,6 @@ public class AvroRowDeserializationSchema extends AbstractDeserializationSchema<
 		this.datumReader = new SpecificDatumReader<>(schema);
 		this.record = (SpecificRecord) SpecificData.newInstance(recordClazz, schema);
 		this.inputStream = new MutableByteArrayInputStream();
-		this.decoder = DecoderFactory.get().binaryDecoder(inputStream, null);
 		this.typeInfo = AvroRecordClassConverter.convert(recordClazz);
 	}
 
@@ -105,6 +105,8 @@ public class AvroRowDeserializationSchema extends AbstractDeserializationSchema<
 		// read record
 		try {
 			inputStream.setBuffer(message);
+			BinaryDecoder decoder = DecoderFactory.get().binaryDecoder(inputStream, DECODER.get());
+			DECODER.set(decoder);
 			this.record = datumReader.read(record, decoder);
 		} catch (IOException e) {
 			throw new RuntimeException("Failed to deserialize Row.", e);
@@ -126,7 +128,6 @@ public class AvroRowDeserializationSchema extends AbstractDeserializationSchema<
 		this.datumReader = new SpecificDatumReader<>(schema);
 		this.record = (SpecificRecord) SpecificData.newInstance(recordClazz, schema);
 		this.inputStream = new MutableByteArrayInputStream();
-		this.decoder = DecoderFactory.get().binaryDecoder(inputStream, null);
 	}
 
 	@Override

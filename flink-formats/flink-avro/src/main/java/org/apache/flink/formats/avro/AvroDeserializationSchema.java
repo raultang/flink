@@ -18,6 +18,7 @@
 
 package org.apache.flink.formats.avro;
 
+import org.apache.avro.io.BinaryDecoder;
 import org.apache.flink.api.common.serialization.DeserializationSchema;
 import org.apache.flink.api.common.typeinfo.TypeInformation;
 import org.apache.flink.formats.avro.typeutils.AvroTypeInfo;
@@ -68,6 +69,9 @@ public class AvroDeserializationSchema<T> implements DeserializationSchema<T> {
 
 	private static final long serialVersionUID = -6766681879020862312L;
 
+	/** ThreadLocal avro decoder that decodes binary data. */
+	private static final ThreadLocal<BinaryDecoder> DECODER =  new ThreadLocal<>();
+
 	/** Class to deserialize to. */
 	private final Class<T> recordClazz;
 
@@ -79,9 +83,6 @@ public class AvroDeserializationSchema<T> implements DeserializationSchema<T> {
 
 	/** Input stream to read message from. */
 	private transient MutableByteArrayInputStream inputStream;
-
-	/** Avro decoder that decodes binary data. */
-	private transient Decoder decoder;
 
 	/** Avro schema for the reader. */
 	private transient Schema reader;
@@ -118,10 +119,6 @@ public class AvroDeserializationSchema<T> implements DeserializationSchema<T> {
 		return inputStream;
 	}
 
-	Decoder getDecoder() {
-		return decoder;
-	}
-
 	@Override
 	public T deserialize(byte[] message) throws IOException {
 		// read record
@@ -131,7 +128,8 @@ public class AvroDeserializationSchema<T> implements DeserializationSchema<T> {
 		GenericDatumReader<T> datumReader = getDatumReader();
 
 		datumReader.setSchema(readerSchema);
-
+		BinaryDecoder decoder = DecoderFactory.get().binaryDecoder(inputStream, DECODER.get());
+		DECODER.set(decoder);
 		return datumReader.read(null, decoder);
 	}
 
@@ -152,7 +150,6 @@ public class AvroDeserializationSchema<T> implements DeserializationSchema<T> {
 		}
 
 		this.inputStream = new MutableByteArrayInputStream();
-		this.decoder = DecoderFactory.get().binaryDecoder(inputStream, null);
 	}
 
 	@Override
