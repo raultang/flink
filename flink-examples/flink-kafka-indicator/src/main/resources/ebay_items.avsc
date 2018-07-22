@@ -1,0 +1,720 @@
+{
+  "type" : "record",
+  "name" : "EbayItemsRecord",
+  "namespace" : "io.indicator.kafka",
+  "doc" : "Rheos header.",
+  "fields" : [ {
+    "name" : "rheosHeader",
+    "type" : {
+      "type" : "record",
+      "name" : "RheosHeader",
+      "namespace" : "io.indicator.kafka",
+      "fields" : [ {
+        "name" : "eventCreateTimestamp",
+        "type" : "long"
+      }, {
+        "name" : "eventSentTimestamp",
+        "type" : "long"
+      }, {
+        "name" : "schemaId",
+        "type" : "int"
+      }, {
+        "name" : "eventId",
+        "type" : [ "null", {
+          "type" : "string",
+          "avro.java.string" : "String"
+        } ]
+      }, {
+        "name" : "producerId",
+        "type" : {
+          "type" : "string",
+          "avro.java.string" : "String"
+        }
+      } ]
+    }
+  }, {
+    "name" : "rheosDbHeader",
+    "type" : {
+      "type" : "record",
+      "name" : "RheosDbHeader",
+      "namespace" : "io.indicator.kafka",
+      "doc" : "DBStreaming header.",
+      "fields" : [ {
+        "name" : "schema",
+        "type" : {
+          "type" : "string",
+          "avro.java.string" : "String"
+        }
+      }, {
+        "name" : "table",
+        "type" : {
+          "type" : "string",
+          "avro.java.string" : "String"
+        }
+      }, {
+        "name" : "opType",
+        "type" : {
+          "type" : "string",
+          "avro.java.string" : "String"
+        }
+      }, {
+        "name" : "opTs",
+        "type" : {
+          "type" : "string",
+          "avro.java.string" : "String"
+        }
+      }, {
+        "name" : "recordRowid",
+        "type" : {
+          "type" : "string",
+          "avro.java.string" : "String"
+        }
+      }, {
+        "name" : "tranScn",
+        "type" : {
+          "type" : "string",
+          "avro.java.string" : "String"
+        }
+      }, {
+        "name" : "trailSeqno",
+        "type" : "long"
+      }, {
+        "name" : "trailRba",
+        "type" : "long"
+      }, {
+        "name" : "logPosition",
+        "type" : "long"
+      }, {
+        "name" : "logRba",
+        "type" : "long"
+      }, {
+        "name" : "dbName",
+        "type" : {
+          "type" : "string",
+          "avro.java.string" : "String"
+        }
+      }, {
+        "name" : "ggHostName",
+        "type" : {
+          "type" : "string",
+          "avro.java.string" : "String"
+        }
+      }, {
+        "name" : "latencyTsMap",
+        "type" : {
+          "type" : "map",
+          "values" : "long"
+        }
+      }, {
+        "name" : "numColumns",
+        "type" : "int"
+      }, {
+        "name" : "updColumns",
+        "type" : [ "null", "bytes" ]
+      }, {
+        "name" : "nullColumns",
+        "type" : [ "null", "bytes" ]
+      }, {
+        "name" : "missingColumns",
+        "type" : [ "null", "bytes" ]
+      }, {
+        "name" : "beforeNullColumns",
+        "type" : [ "null", "bytes" ]
+      }, {
+        "name" : "updCompressed",
+        "type" : "boolean"
+      }, {
+        "name" : "schemaType",
+        "type" : {
+          "type" : "string",
+          "avro.java.string" : "String"
+        }
+      }, {
+        "name" : "SchemaName",
+        "type" : {
+          "type" : "string",
+          "avro.java.string" : "String"
+        }
+      }, {
+        "name" : "timestamps",
+        "type" : {
+          "type" : "map",
+          "values" : "long"
+        }
+      } ]
+    }
+  }, {
+    "name" : "currentRecord",
+    "type" : {
+      "type" : "record",
+      "name" : "EbayItems",
+      "namespace" : "io.indicator.kafka",
+      "doc" : "DBStreaming data.",
+      "fields" : [ {
+        "name" : "marketplace",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"1\",\"keyColumn\":\"1\",\"ggDataType\":\"64\",\"srcType\":\"NUMBER(38,0)\",\"extLength\":\"39\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "id",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"2\",\"keyColumn\":\"1\",\"ggDataType\":\"64\",\"srcType\":\"NUMBER(38,0)\",\"extLength\":\"39\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "sale_type",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"3\",\"keyColumn\":\"0\",\"ggDataType\":\"64\",\"srcType\":\"NUMBER(38,0)\",\"extLength\":\"39\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "title",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"4\",\"keyColumn\":\"0\",\"ggDataType\":\"64\",\"srcType\":\"VARCHAR2(508)\",\"extLength\":\"508\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "location",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"5\",\"keyColumn\":\"0\",\"ggDataType\":\"64\",\"srcType\":\"VARCHAR2(254)\",\"extLength\":\"254\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "seller",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"6\",\"keyColumn\":\"0\",\"ggDataType\":\"64\",\"srcType\":\"NUMBER(38,0)\",\"extLength\":\"39\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "owner",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"7\",\"keyColumn\":\"0\",\"ggDataType\":\"64\",\"srcType\":\"NUMBER(38,0)\",\"extLength\":\"39\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "password",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"8\",\"keyColumn\":\"0\",\"ggDataType\":\"64\",\"srcType\":\"NUMBER(38,0)\",\"extLength\":\"39\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "category",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"9\",\"keyColumn\":\"0\",\"ggDataType\":\"64\",\"srcType\":\"NUMBER(38,0)\",\"extLength\":\"39\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "quantity",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"10\",\"keyColumn\":\"0\",\"ggDataType\":\"64\",\"srcType\":\"NUMBER(38,0)\",\"extLength\":\"39\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "bidcount",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"11\",\"keyColumn\":\"0\",\"ggDataType\":\"64\",\"srcType\":\"NUMBER(38,0)\",\"extLength\":\"39\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "created",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"12\",\"keyColumn\":\"0\",\"ggDataType\":\"192\",\"srcType\":\"DATE\",\"extLength\":\"19\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "sale_start",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"13\",\"keyColumn\":\"0\",\"ggDataType\":\"192\",\"srcType\":\"DATE\",\"extLength\":\"19\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "sale_end",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"14\",\"keyColumn\":\"0\",\"ggDataType\":\"192\",\"srcType\":\"DATE\",\"extLength\":\"19\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "sale_status",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"15\",\"keyColumn\":\"0\",\"ggDataType\":\"64\",\"srcType\":\"NUMBER(38,0)\",\"extLength\":\"39\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "current_price",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"16\",\"keyColumn\":\"0\",\"ggDataType\":\"134\",\"srcType\":\"NUMBER(18,2)\",\"extLength\":\"20\",\"scale\":\"2\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "start_price",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"17\",\"keyColumn\":\"0\",\"ggDataType\":\"134\",\"srcType\":\"NUMBER(18,2)\",\"extLength\":\"20\",\"scale\":\"2\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "reserve_price",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"18\",\"keyColumn\":\"0\",\"ggDataType\":\"134\",\"srcType\":\"NUMBER(18,2)\",\"extLength\":\"20\",\"scale\":\"2\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "high_bidder",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"19\",\"keyColumn\":\"0\",\"ggDataType\":\"64\",\"srcType\":\"NUMBER(38,0)\",\"extLength\":\"39\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "featured",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"20\",\"keyColumn\":\"0\",\"ggDataType\":\"0\",\"srcType\":\"CHAR(1)\",\"extLength\":\"1\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "super_featured",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"21\",\"keyColumn\":\"0\",\"ggDataType\":\"0\",\"srcType\":\"CHAR(1)\",\"extLength\":\"1\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "bold_title",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"22\",\"keyColumn\":\"0\",\"ggDataType\":\"0\",\"srcType\":\"CHAR(1)\",\"extLength\":\"1\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "private_sale",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"23\",\"keyColumn\":\"0\",\"ggDataType\":\"0\",\"srcType\":\"CHAR(1)\",\"extLength\":\"1\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "registered_only",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"24\",\"keyColumn\":\"0\",\"ggDataType\":\"0\",\"srcType\":\"CHAR(1)\",\"extLength\":\"1\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "host",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"25\",\"keyColumn\":\"0\",\"ggDataType\":\"64\",\"srcType\":\"VARCHAR2(64)\",\"extLength\":\"64\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "visitcount",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"26\",\"keyColumn\":\"0\",\"ggDataType\":\"64\",\"srcType\":\"NUMBER(38,0)\",\"extLength\":\"39\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "picture_url",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"27\",\"keyColumn\":\"0\",\"ggDataType\":\"64\",\"srcType\":\"VARCHAR2(4000)\",\"extLength\":\"4000\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "last_modified",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"28\",\"keyColumn\":\"0\",\"ggDataType\":\"192\",\"srcType\":\"DATE\",\"extLength\":\"19\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "icon_flags",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"29\",\"keyColumn\":\"0\",\"ggDataType\":\"64\",\"srcType\":\"VARCHAR2(3)\",\"extLength\":\"3\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "gallery_url",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"30\",\"keyColumn\":\"0\",\"ggDataType\":\"64\",\"srcType\":\"VARCHAR2(1024)\",\"extLength\":\"1024\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "gallery_thumb_x_size",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"31\",\"keyColumn\":\"0\",\"ggDataType\":\"134\",\"srcType\":\"NUMBER(4,0)\",\"extLength\":\"8\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "gallery_thumb_y_size",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"32\",\"keyColumn\":\"0\",\"ggDataType\":\"134\",\"srcType\":\"NUMBER(4,0)\",\"extLength\":\"8\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "gallery_state",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"33\",\"keyColumn\":\"0\",\"ggDataType\":\"134\",\"srcType\":\"NUMBER(5,0)\",\"extLength\":\"8\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "gallery_type",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"34\",\"keyColumn\":\"0\",\"ggDataType\":\"134\",\"srcType\":\"NUMBER(2,0)\",\"extLength\":\"8\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "country_id",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"35\",\"keyColumn\":\"0\",\"ggDataType\":\"134\",\"srcType\":\"NUMBER(4,0)\",\"extLength\":\"8\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "notice_time",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"36\",\"keyColumn\":\"0\",\"ggDataType\":\"192\",\"srcType\":\"DATE\",\"extLength\":\"19\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "bill_time",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"37\",\"keyColumn\":\"0\",\"ggDataType\":\"192\",\"srcType\":\"DATE\",\"extLength\":\"19\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "currency_id",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"38\",\"keyColumn\":\"0\",\"ggDataType\":\"134\",\"srcType\":\"NUMBER(3,0)\",\"extLength\":\"8\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "zip",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"39\",\"keyColumn\":\"0\",\"ggDataType\":\"64\",\"srcType\":\"VARCHAR2(12)\",\"extLength\":\"12\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "dutch_gms",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"40\",\"keyColumn\":\"0\",\"ggDataType\":\"134\",\"srcType\":\"NUMBER(18,2)\",\"extLength\":\"20\",\"scale\":\"2\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "billing_currency_id",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"41\",\"keyColumn\":\"0\",\"ggDataType\":\"134\",\"srcType\":\"NUMBER(3,0)\",\"extLength\":\"8\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "shipping_option",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"42\",\"keyColumn\":\"0\",\"ggDataType\":\"134\",\"srcType\":\"NUMBER(3,0)\",\"extLength\":\"8\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "ship_region_flags",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"43\",\"keyColumn\":\"0\",\"ggDataType\":\"134\",\"srcType\":\"NUMBER(5,0)\",\"extLength\":\"8\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "desc_lang",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"44\",\"keyColumn\":\"0\",\"ggDataType\":\"134\",\"srcType\":\"NUMBER(3,0)\",\"extLength\":\"8\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "site_id",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"45\",\"keyColumn\":\"0\",\"ggDataType\":\"134\",\"srcType\":\"NUMBER(3,0)\",\"extLength\":\"8\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "maxbid",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"46\",\"keyColumn\":\"0\",\"ggDataType\":\"134\",\"srcType\":\"NUMBER(15,2)\",\"extLength\":\"17\",\"scale\":\"2\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "payment_cash",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"47\",\"keyColumn\":\"0\",\"ggDataType\":\"0\",\"srcType\":\"CHAR(1)\",\"extLength\":\"1\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "payment_moneyxfer",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"48\",\"keyColumn\":\"0\",\"ggDataType\":\"0\",\"srcType\":\"CHAR(1)\",\"extLength\":\"1\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "payment_cc",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"49\",\"keyColumn\":\"0\",\"ggDataType\":\"0\",\"srcType\":\"CHAR(1)\",\"extLength\":\"1\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "content_modified",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"50\",\"keyColumn\":\"0\",\"ggDataType\":\"192\",\"srcType\":\"DATE\",\"extLength\":\"19\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "passwordex",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"51\",\"keyColumn\":\"0\",\"ggDataType\":\"64\",\"srcType\":\"NUMBER(38,0)\",\"extLength\":\"39\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "shipping_fee",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"52\",\"keyColumn\":\"0\",\"ggDataType\":\"134\",\"srcType\":\"NUMBER(15,2)\",\"extLength\":\"17\",\"scale\":\"2\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "shipping_xfee",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"53\",\"keyColumn\":\"0\",\"ggDataType\":\"134\",\"srcType\":\"NUMBER(15,2)\",\"extLength\":\"17\",\"scale\":\"2\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "tax_state",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"54\",\"keyColumn\":\"0\",\"ggDataType\":\"134\",\"srcType\":\"NUMBER(5,0)\",\"extLength\":\"8\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "return_policy",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"55\",\"keyColumn\":\"0\",\"ggDataType\":\"64\",\"srcType\":\"VARCHAR2(1000)\",\"extLength\":\"1000\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "photo_count",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"56\",\"keyColumn\":\"0\",\"ggDataType\":\"134\",\"srcType\":\"NUMBER(2,0)\",\"extLength\":\"8\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "photo_display_type",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"57\",\"keyColumn\":\"0\",\"ggDataType\":\"134\",\"srcType\":\"NUMBER(2,0)\",\"extLength\":\"8\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "tax_new",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"58\",\"keyColumn\":\"0\",\"ggDataType\":\"134\",\"srcType\":\"NUMBER(6,3)\",\"extLength\":\"8\",\"scale\":\"3\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "tax_new_state",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"59\",\"keyColumn\":\"0\",\"ggDataType\":\"64\",\"srcType\":\"VARCHAR2(32)\",\"extLength\":\"32\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "sku_num",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"60\",\"keyColumn\":\"0\",\"ggDataType\":\"64\",\"srcType\":\"VARCHAR2(100)\",\"extLength\":\"100\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "category2",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"61\",\"keyColumn\":\"0\",\"ggDataType\":\"64\",\"srcType\":\"NUMBER\",\"extLength\":\"50\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "bin_price",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"62\",\"keyColumn\":\"0\",\"ggDataType\":\"134\",\"srcType\":\"NUMBER(15,2)\",\"extLength\":\"17\",\"scale\":\"2\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "relistid",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"63\",\"keyColumn\":\"0\",\"ggDataType\":\"64\",\"srcType\":\"NUMBER(38,0)\",\"extLength\":\"39\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "storefront_flags",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"64\",\"keyColumn\":\"0\",\"ggDataType\":\"64\",\"srcType\":\"NUMBER(38,0)\",\"extLength\":\"39\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "quantity_sold",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"65\",\"keyColumn\":\"0\",\"ggDataType\":\"64\",\"srcType\":\"NUMBER(38,0)\",\"extLength\":\"39\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "insurance_fee",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"66\",\"keyColumn\":\"0\",\"ggDataType\":\"134\",\"srcType\":\"NUMBER(15,2)\",\"extLength\":\"17\",\"scale\":\"2\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "last_transaction_date",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"67\",\"keyColumn\":\"0\",\"ggDataType\":\"192\",\"srcType\":\"DATE\",\"extLength\":\"19\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "myebay_delete",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"68\",\"keyColumn\":\"0\",\"ggDataType\":\"134\",\"srcType\":\"NUMBER(5,0)\",\"extLength\":\"8\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "end_code",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"69\",\"keyColumn\":\"0\",\"ggDataType\":\"64\",\"srcType\":\"NUMBER(38,0)\",\"extLength\":\"39\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "content_revised",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"70\",\"keyColumn\":\"0\",\"ggDataType\":\"192\",\"srcType\":\"DATE\",\"extLength\":\"19\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "flags",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"71\",\"keyColumn\":\"0\",\"ggDataType\":\"64\",\"srcType\":\"NUMBER(38,0)\",\"extLength\":\"39\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "application_id",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"72\",\"keyColumn\":\"0\",\"ggDataType\":\"64\",\"srcType\":\"NUMBER(38,0)\",\"extLength\":\"39\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "customer_reference_code",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"73\",\"keyColumn\":\"0\",\"ggDataType\":\"64\",\"srcType\":\"VARCHAR2(32)\",\"extLength\":\"32\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "eoa_state",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"74\",\"keyColumn\":\"0\",\"ggDataType\":\"134\",\"srcType\":\"NUMBER(2,0)\",\"extLength\":\"8\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "eoa_retries",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"75\",\"keyColumn\":\"0\",\"ggDataType\":\"134\",\"srcType\":\"NUMBER(4,0)\",\"extLength\":\"8\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "cat_modified",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"76\",\"keyColumn\":\"0\",\"ggDataType\":\"192\",\"srcType\":\"DATE\",\"extLength\":\"19\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "tuv_approval_code",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"77\",\"keyColumn\":\"0\",\"ggDataType\":\"134\",\"srcType\":\"NUMBER(8,0)\",\"extLength\":\"9\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "shipping_fee_2",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"78\",\"keyColumn\":\"0\",\"ggDataType\":\"134\",\"srcType\":\"NUMBER(15,2)\",\"extLength\":\"17\",\"scale\":\"2\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "shipping_xfee_2",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"79\",\"keyColumn\":\"0\",\"ggDataType\":\"134\",\"srcType\":\"NUMBER(15,2)\",\"extLength\":\"17\",\"scale\":\"2\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "shipping_fee_3",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"80\",\"keyColumn\":\"0\",\"ggDataType\":\"134\",\"srcType\":\"NUMBER(15,2)\",\"extLength\":\"17\",\"scale\":\"2\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "shipping_xfee_3",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"81\",\"keyColumn\":\"0\",\"ggDataType\":\"134\",\"srcType\":\"NUMBER(15,2)\",\"extLength\":\"17\",\"scale\":\"2\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "attr_label_id",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"82\",\"keyColumn\":\"0\",\"ggDataType\":\"134\",\"srcType\":\"NUMBER(10,0)\",\"extLength\":\"11\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "theme_id",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"83\",\"keyColumn\":\"0\",\"ggDataType\":\"64\",\"srcType\":\"NUMBER(38,0)\",\"extLength\":\"39\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "layout_id",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"84\",\"keyColumn\":\"0\",\"ggDataType\":\"64\",\"srcType\":\"NUMBER(38,0)\",\"extLength\":\"39\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "layout_flag",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"85\",\"keyColumn\":\"0\",\"ggDataType\":\"64\",\"srcType\":\"NUMBER(38,0)\",\"extLength\":\"39\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "paypal_seller_email",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"86\",\"keyColumn\":\"0\",\"ggDataType\":\"64\",\"srcType\":\"VARCHAR2(128)\",\"extLength\":\"128\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "origin_postal_code",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"87\",\"keyColumn\":\"0\",\"ggDataType\":\"64\",\"srcType\":\"VARCHAR2(12)\",\"extLength\":\"12\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "weight",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"88\",\"keyColumn\":\"0\",\"ggDataType\":\"64\",\"srcType\":\"NUMBER(38,0)\",\"extLength\":\"39\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "package_size",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"89\",\"keyColumn\":\"0\",\"ggDataType\":\"134\",\"srcType\":\"NUMBER(5,0)\",\"extLength\":\"8\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "weight_unit_type",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"90\",\"keyColumn\":\"0\",\"ggDataType\":\"134\",\"srcType\":\"NUMBER(5,0)\",\"extLength\":\"8\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "shipping_type",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"91\",\"keyColumn\":\"0\",\"ggDataType\":\"134\",\"srcType\":\"NUMBER(5,0)\",\"extLength\":\"8\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "paypal_icon_type",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"92\",\"keyColumn\":\"0\",\"ggDataType\":\"134\",\"srcType\":\"NUMBER(4,0)\",\"extLength\":\"8\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "current_winning_qty",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"93\",\"keyColumn\":\"0\",\"ggDataType\":\"64\",\"srcType\":\"NUMBER(38,0)\",\"extLength\":\"39\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "flags2",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"94\",\"keyColumn\":\"0\",\"ggDataType\":\"64\",\"srcType\":\"NUMBER(38,0)\",\"extLength\":\"39\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "gallery_image_source",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"95\",\"keyColumn\":\"0\",\"ggDataType\":\"64\",\"srcType\":\"VARCHAR2(128)\",\"extLength\":\"128\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "subtitle",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"96\",\"keyColumn\":\"0\",\"ggDataType\":\"64\",\"srcType\":\"VARCHAR2(254)\",\"extLength\":\"254\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "pbp_eligibility",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"97\",\"keyColumn\":\"0\",\"ggDataType\":\"134\",\"srcType\":\"NUMBER(1,0)\",\"extLength\":\"8\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "product_id",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"98\",\"keyColumn\":\"0\",\"ggDataType\":\"64\",\"srcType\":\"NUMBER(38,0)\",\"extLength\":\"39\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "lower_price_option",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"99\",\"keyColumn\":\"0\",\"ggDataType\":\"134\",\"srcType\":\"NUMBER(5,0)\",\"extLength\":\"8\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "relist_parent_id",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"100\",\"keyColumn\":\"0\",\"ggDataType\":\"64\",\"srcType\":\"NUMBER(38,0)\",\"extLength\":\"39\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "listing_method",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"101\",\"keyColumn\":\"0\",\"ggDataType\":\"134\",\"srcType\":\"NUMBER(3,0)\",\"extLength\":\"8\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "sale_sched_end",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"102\",\"keyColumn\":\"0\",\"ggDataType\":\"192\",\"srcType\":\"DATE\",\"extLength\":\"19\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "flags3",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"103\",\"keyColumn\":\"0\",\"ggDataType\":\"64\",\"srcType\":\"NUMBER(38,0)\",\"extLength\":\"39\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "lot_size",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"104\",\"keyColumn\":\"0\",\"ggDataType\":\"64\",\"srcType\":\"NUMBER(38,0)\",\"extLength\":\"39\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "ppfo_offer_id",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"105\",\"keyColumn\":\"0\",\"ggDataType\":\"64\",\"srcType\":\"NUMBER(38,0)\",\"extLength\":\"39\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "qa_unanswered_question_count",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"106\",\"keyColumn\":\"0\",\"ggDataType\":\"134\",\"srcType\":\"NUMBER(10,0)\",\"extLength\":\"11\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "qa_public_count",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"107\",\"keyColumn\":\"0\",\"ggDataType\":\"134\",\"srcType\":\"NUMBER(3,0)\",\"extLength\":\"8\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "gallery_version",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"108\",\"keyColumn\":\"0\",\"ggDataType\":\"134\",\"srcType\":\"NUMBER(3,0)\",\"extLength\":\"8\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "utf8_status",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"109\",\"keyColumn\":\"0\",\"ggDataType\":\"134\",\"srcType\":\"NUMBER(1,0)\",\"extLength\":\"8\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "peak_photo_count2",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"110\",\"keyColumn\":\"0\",\"ggDataType\":\"134\",\"srcType\":\"NUMBER(2,0)\",\"extLength\":\"8\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "flags4",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"111\",\"keyColumn\":\"0\",\"ggDataType\":\"64\",\"srcType\":\"NUMBER(38,0)\",\"extLength\":\"39\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "peak_photo_count",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"112\",\"keyColumn\":\"0\",\"ggDataType\":\"134\",\"srcType\":\"NUMBER(2,0)\",\"extLength\":\"8\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "storefront_category2",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"113\",\"keyColumn\":\"0\",\"ggDataType\":\"64\",\"srcType\":\"NUMBER(38,0)\",\"extLength\":\"39\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "highest_best_offer_amt",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"114\",\"keyColumn\":\"0\",\"ggDataType\":\"134\",\"srcType\":\"NUMBER(18,2)\",\"extLength\":\"20\",\"scale\":\"2\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "best_offer_count",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"115\",\"keyColumn\":\"0\",\"ggDataType\":\"134\",\"srcType\":\"NUMBER(5,0)\",\"extLength\":\"8\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "user_item_property_key",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"116\",\"keyColumn\":\"0\",\"ggDataType\":\"64\",\"srcType\":\"VARCHAR2(256)\",\"extLength\":\"256\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "user_designation",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"117\",\"keyColumn\":\"0\",\"ggDataType\":\"134\",\"srcType\":\"NUMBER(3,0)\",\"extLength\":\"8\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "reserved_quantity",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"118\",\"keyColumn\":\"0\",\"ggDataType\":\"64\",\"srcType\":\"NUMBER(38,0)\",\"extLength\":\"39\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "seller_product_id",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"119\",\"keyColumn\":\"0\",\"ggDataType\":\"64\",\"srcType\":\"VARCHAR2(200)\",\"extLength\":\"200\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "flags5",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"120\",\"keyColumn\":\"0\",\"ggDataType\":\"64\",\"srcType\":\"NUMBER(38,0)\",\"extLength\":\"39\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "update_version",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"121\",\"keyColumn\":\"0\",\"ggDataType\":\"134\",\"srcType\":\"NUMBER(10,0)\",\"extLength\":\"11\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "watch_count",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"122\",\"keyColumn\":\"0\",\"ggDataType\":\"64\",\"srcType\":\"NUMBER(38,0)\",\"extLength\":\"39\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "unique_bidder_count",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"123\",\"keyColumn\":\"0\",\"ggDataType\":\"134\",\"srcType\":\"NUMBER(10,0)\",\"extLength\":\"11\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "seller_delete_date",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"124\",\"keyColumn\":\"0\",\"ggDataType\":\"192\",\"srcType\":\"DATE\",\"extLength\":\"19\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "unique_winner_count",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"125\",\"keyColumn\":\"0\",\"ggDataType\":\"134\",\"srcType\":\"NUMBER(10,0)\",\"extLength\":\"11\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "flags6",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"126\",\"keyColumn\":\"0\",\"ggDataType\":\"64\",\"srcType\":\"NUMBER(38,0)\",\"extLength\":\"39\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "flags7",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"127\",\"keyColumn\":\"0\",\"ggDataType\":\"64\",\"srcType\":\"NUMBER(38,0)\",\"extLength\":\"39\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "anonymous_highbidder_number",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"128\",\"keyColumn\":\"0\",\"ggDataType\":\"134\",\"srcType\":\"NUMBER(10,0)\",\"extLength\":\"11\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "flags08",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"129\",\"keyColumn\":\"0\",\"ggDataType\":\"64\",\"srcType\":\"NUMBER(38,0)\",\"extLength\":\"39\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "original_price",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"130\",\"keyColumn\":\"0\",\"ggDataType\":\"134\",\"srcType\":\"NUMBER(15,2)\",\"extLength\":\"17\",\"scale\":\"2\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "promo_sale_start_date",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"131\",\"keyColumn\":\"0\",\"ggDataType\":\"192\",\"srcType\":\"DATE\",\"extLength\":\"19\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "promo_sale_end_date",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"132\",\"keyColumn\":\"0\",\"ggDataType\":\"192\",\"srcType\":\"DATE\",\"extLength\":\"19\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "ppl_running_balance_amt",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"133\",\"keyColumn\":\"0\",\"ggDataType\":\"134\",\"srcType\":\"NUMBER(15,2)\",\"extLength\":\"17\",\"scale\":\"2\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "flags09",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"134\",\"keyColumn\":\"0\",\"ggDataType\":\"64\",\"srcType\":\"NUMBER(38,0)\",\"extLength\":\"39\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "flags10",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"135\",\"keyColumn\":\"0\",\"ggDataType\":\"64\",\"srcType\":\"NUMBER(38,0)\",\"extLength\":\"39\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "item_version_id",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"136\",\"keyColumn\":\"0\",\"ggDataType\":\"64\",\"srcType\":\"NUMBER(38,0)\",\"extLength\":\"39\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "significant_revise_count",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"137\",\"keyColumn\":\"0\",\"ggDataType\":\"134\",\"srcType\":\"NUMBER(10,0)\",\"extLength\":\"11\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "flags11",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"138\",\"keyColumn\":\"0\",\"ggDataType\":\"64\",\"srcType\":\"NUMBER(38,0)\",\"extLength\":\"39\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "flags12",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"139\",\"keyColumn\":\"0\",\"ggDataType\":\"64\",\"srcType\":\"NUMBER(38,0)\",\"extLength\":\"39\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "quantity_sold_by_pickup_store",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"140\",\"keyColumn\":\"0\",\"ggDataType\":\"64\",\"srcType\":\"NUMBER(38,0)\",\"extLength\":\"39\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      }, {
+        "name" : "core_listing_version",
+        "type" : [ "null", "string" ],
+        "doc" : "{\"srcColOrder\":\"141\",\"keyColumn\":\"0\",\"ggDataType\":\"64\",\"srcType\":\"NUMBER(38,0)\",\"extLength\":\"39\",\"scale\":\"0\",\"lobColumn\":\"0\",\"dataClassification\":\"Internal\",\"isEncrypted\":\"\",\"description\":\"createTs: 1503407107094\"}"
+      } ]
+    }
+  } ]
+}

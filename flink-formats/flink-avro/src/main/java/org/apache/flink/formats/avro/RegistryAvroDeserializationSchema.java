@@ -21,6 +21,8 @@ package org.apache.flink.formats.avro;
 import org.apache.avro.Schema;
 import org.apache.avro.generic.GenericDatumReader;
 import org.apache.avro.generic.GenericRecord;
+import org.apache.avro.io.BinaryDecoder;
+import org.apache.avro.io.DecoderFactory;
 import org.apache.avro.specific.SpecificRecord;
 
 import javax.annotation.Nullable;
@@ -70,8 +72,8 @@ public class RegistryAvroDeserializationSchema<T> extends AvroDeserializationSch
 
 			datumReader.setSchema(writerSchema);
 			datumReader.setExpected(readerSchema);
-
-			return datumReader.read(null, getDecoder());
+			BinaryDecoder decoder = DecoderFactory.get().binaryDecoder(message, null);
+			return datumReader.read(null, decoder);
 	}
 
 	@Override

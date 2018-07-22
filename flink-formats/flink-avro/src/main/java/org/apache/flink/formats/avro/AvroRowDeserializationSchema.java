@@ -28,7 +28,6 @@ import org.apache.flink.util.Preconditions;
 import org.apache.avro.Schema;
 import org.apache.avro.generic.GenericRecord;
 import org.apache.avro.io.DatumReader;
-import org.apache.avro.io.Decoder;
 import org.apache.avro.io.DecoderFactory;
 import org.apache.avro.specific.SpecificData;
 import org.apache.avro.specific.SpecificDatumReader;
@@ -111,7 +110,6 @@ public class AvroRowDeserializationSchema extends AbstractDeserializationSchema<
 		} catch (IOException e) {
 			throw new RuntimeException("Failed to deserialize Row.", e);
 		}
-
 		// convert to row
 		final Object row = convertToRow(schema, record);
 		return (Row) row;
